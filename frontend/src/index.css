@@ -1,0 +1,375 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =========================
+   GLOBAL STYLES
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #0f0f0f;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+}
+
+
+/* =========================
+   ANIMATED BACKGROUND
+========================= */
+
+body::before {
+    content: "";
+    position: fixed;
+    width: 200%;
+    height: 200%;
+    top: -50%;
+    left: -50%;
+    background: radial-gradient(circle at top left, #7e22ce33, transparent 30%), radial-gradient(circle at bottom right, #9333ea33, transparent 30%), radial-gradient(circle at center, #3b076433, transparent 40%);
+    animation: rotateBg 20s linear infinite;
+    z-index: -1;
+}
+
+@keyframes rotateBg {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* =========================
+   MAIN CONTAINER
+========================= */
+
+.app-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+
+/* =========================
+   GLASS CARD
+========================= */
+
+.glass-card {
+    width: 100%;
+    max-width: 420px;
+    padding: 35px;
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 20px rgba(168, 85, 247, 0.2);
+    animation: fadeUp 1s ease;
+    transition: 0.3s ease;
+}
+
+.glass-card:hover {
+    transform: translateY(-5px) scale(1.01);
+    box-shadow: 0 12px 40px rgba(168, 85, 247, 0.35), 0 0 30px rgba(168, 85, 247, 0.25);
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =========================
+   TITLES
+========================= */
+
+.page-title {
+    font-size: 34px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 12px;
+    background: linear-gradient(to right, #c084fc, #9333ea);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: glowText 2s ease-in-out infinite alternate;
+}
+
+@keyframes glowText {
+    from {
+        text-shadow: 0 0 10px #9333ea66;
+    }
+    to {
+        text-shadow: 0 0 25px #c084fc;
+    }
+}
+
+.page-subtitle {
+    text-align: center;
+    color: #d1d5db;
+    margin-bottom: 24px;
+    font-size: 15px;
+}
+
+
+/* =========================
+   INPUT FIELD
+========================= */
+
+.input-field {
+    width: 100%;
+    padding: 14px 18px;
+    margin-bottom: 18px;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.05);
+    color: white;
+    font-size: 15px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.input-field::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.input-field:focus {
+    border-color: #a855f7;
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 10px rgba(168, 85, 247, 0.4), 0 0 20px rgba(168, 85, 247, 0.2);
+    transform: scale(1.02);
+}
+
+
+/* =========================
+   BUTTON
+========================= */
+
+.primary-btn {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #9333ea, #7e22ce);
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.primary-btn:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.5), 0 0 40px rgba(168, 85, 247, 0.3);
+}
+
+.primary-btn:active {
+    transform: scale(0.98);
+}
+
+
+/* Button Shine Effect */
+
+.primary-btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient( 120deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transition: 0.5s;
+}
+
+.primary-btn:hover::before {
+    left: 100%;
+}
+
+
+/* =========================
+   LINKS
+========================= */
+
+.link-text {
+    text-align: center;
+    margin-top: 18px;
+    color: #d1d5db;
+}
+
+.link-text a {
+    color: #c084fc;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.link-text a:hover {
+    color: white;
+    text-shadow: 0 0 10px #c084fc;
+}
+
+
+/* =========================
+   FLOATING CIRCLES
+========================= */
+
+.circle {
+    position: fixed;
+    border-radius: 50%;
+    background: rgba(168, 85, 247, 0.15);
+    animation: float 8s infinite ease-in-out;
+    z-index: -1;
+}
+
+.circle:nth-child(1) {
+    width: 120px;
+    height: 120px;
+    top: 10%;
+    left: 5%;
+}
+
+.circle:nth-child(2) {
+    width: 180px;
+    height: 180px;
+    bottom: 10%;
+    right: 5%;
+    animation-duration: 10s;
+}
+
+.circle:nth-child(3) {
+    width: 80px;
+    height: 80px;
+    top: 60%;
+    left: 70%;
+    animation-duration: 6s;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 500px) {
+    .glass-card {
+        padding: 25px;
+    }
+    .page-title {
+        font-size: 28px;
+    }
+    .input-field {
+        padding: 12px 14px;
+    }
+    .primary-btn {
+        padding: 12px;
+    }
+}
+
+
+/* =========================
+   CUSTOM UTILITIES
+========================= */
+
+.glass {
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+.gradient-text {
+    background: linear-gradient(135deg, #a78bfa, #60a5fa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 20px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #7c3aed, #2563eb);
+    color: #fff;
+    font-weight: 600;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #6d28d9, #1d4ed8);
+    transform: translateY(-1px);
+}
+
+.btn-primary:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.sidebar-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    width: 100%;
+    text-align: left;
+}
+
+.sidebar-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.sidebar-item.active {
+    background: rgba(124, 58, 237, 0.15);
+    color: #a78bfa;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
